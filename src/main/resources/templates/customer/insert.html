@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert Customer</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap4.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"/>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap4.min.js"></script>
+</head>
+<body>
+<form method="post" class="col col-md-6 needs-validation"  enctype="multipart/form-data" th:object="${dto}">
+    <input type="hidden" th:field="*{id}">
+    <div class="form-group">
+        <label for="inputNama">Nama Lengkap</label>
+        <input type="text" class="form-control" id="inputNama" th:field="*{nama}">
+        <div class="alert alert-danger alert-dismissible fade show" th:errors="*{nama}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="inputAlamat">Alamat</label>
+        <textarea class="form-control" id="inputAlamat" rows="3" th:field="*{alamat}"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="inputKota">Kota</label>
+        <input type="text" class="form-control" id="inputKota" th:field="*{kota}">
+    </div>
+    <div class="form-group">
+        <label for="inputProvinsi">Provinsi</label>
+        <input type="text" class="form-control" id="inputProvinsi" th:field="*{provinsi}">
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="active" th:field="*{active}">
+        <label class="form-check-label" for="active">Check me to Active</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a th:href="@{/customer/index}" class="btn btn-danger">Back To Index</a>
+</form>
+</body>
+</html>
